@@ -1,0 +1,40 @@
+<h1>this is new Posts page</h1>
+
+<h1>now, you are at: --><%= board_posts_path %></h1>
+
+<%= form_with(model: @post, url: board_posts_path, local: true) do |p|%>
+    
+<div class="fields">
+    <%= p.label :title, '文章名稱'%>
+    <%= p.text_field :title%>
+</div>
+
+<div class="fields">
+    <%= p.label :content, '文章內容'%>
+    <%= p.text_area :content%>
+</div>
+
+    <%= p.label :belongs_to, '作者'%>
+    <%= p.text_area :board%>
+
+    <%= p.label :datetime, '時間'%>
+    <%= p.date_field :deleted_at%>
+
+    <%= p.label :string, 'IP'%>
+    <%= p.text_field :ip_address%>
+    
+    <%= p.label :string, '文章內容'%>
+    <%= p.text_area :serial%>
+
+
+    <%= p.submit '送出'%>
+<% end %>
+
+
+
+      t.string :title
+      t.text :content
+      t.belongs_to :board, null: false, foreign_key: true
+      t.datetime :deleted_at
+      t.string :ip_address
+      t.string :serial

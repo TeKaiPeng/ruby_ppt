@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
     end
     
     def show
+        @post = @board.posts
     end
 
     def new
@@ -37,6 +38,7 @@ class BoardsController < ApplicationController
         @board.destroy
         redirect_to boards_path, notice: "刪除成功啦"
     end
+
 
     private
     def find_board

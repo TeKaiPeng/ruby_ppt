@@ -1,2 +1,15 @@
-<h1>show</h1>
+<h1>show --->>> 『 <%= @board.title %> 』</h1>
 <% params[:id]%>
+
+<%= link_to '新增文章', new_board_post_path(@board) %>
+
+
+<ul>
+    <% @post.each do |post| %>
+        <li>
+            <%= link_to post.title, board_posts_path(@board, post) %>
+            <%= link_to "編輯", edit_post_path(post) %>
+            <%= link_to "刪除", post_path(post), method:'delete', data: {confirm: '確認刪除？'}%>
+        </li>
+    <% end %>
+</ul>
