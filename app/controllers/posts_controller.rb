@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
     before_action :find_board, only: [:create, :new]
 
-    
     def new
         @post = @board.posts.new
         @post = Post.new
@@ -18,6 +17,13 @@ class PostsController < ApplicationController
 
     def index
     end
+
+    def edit
+    end
+    
+    def show 
+        @post = Post.find(params[:id])
+    end    
 
     def destroy
         @post = Post.find(params[:id])
