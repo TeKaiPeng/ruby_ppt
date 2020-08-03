@@ -1,2 +1,17 @@
 <h1>這是user_sign_in頁面</h1>
 
+<%= form_for(@user, url: login_users_path) do |form| %>
+
+    <div class="fields">
+        <%= form.label :account %>
+        <%= form.text_field :accountm, placeholder: '請輸入帳號或email' %>
+    </div>
+
+    <div class="fields">
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+    </div>
+
+    <%= form.submit '登入' %>
+    
+<% end %>

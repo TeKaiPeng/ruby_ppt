@@ -2,6 +2,8 @@ class User < ApplicationRecord
     validates :account, uniqueness: true, uniqueness: true
     validates :email, uniqueness: true, uniqueness: true
 
+    has_many :board_masters
+    has_many :boards, through: :board_masters
 
     before_create :encrypt_password
 
@@ -10,8 +12,8 @@ class User < ApplicationRecord
             find_by(account: options[:account], 
                     # password: Digest::SHA1.hexdigest('x' + options[:password] + 'y'))
                     password: Digest::SHA1.hexdigest("x#{options[:password]}y"))
-        else
-            return false
+        # else
+        #     return false 因為都是回傳nil, 所以可以乾脆不寫
         end
     end
 

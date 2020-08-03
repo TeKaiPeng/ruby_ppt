@@ -2,6 +2,8 @@ class BoardsController < ApplicationController
     include UsersHelper
 
     before_action :find_board, only: [:show, :edit, :update, :destroy]
+    before_action :require_user_sign_in, except: [:index, :show]
+
 
     def index
         @boards = Board.where(deleted_at: nil)
@@ -12,12 +14,11 @@ class BoardsController < ApplicationController
     end
 
     def new
-        if user_signed_in?
+        # if user_signed_in? #!上面有before_action了所以可以註解掉
         @board = Board.new
-        else
-            redirect_to root_path, :notice '請先登入'
-        end
-
+        # else
+        #     redirect_to root_path, :notice '請先登入'
+        # end
     end
 
     def create
@@ -55,5 +56,6 @@ class BoardsController < ApplicationController
     def board_params
     params.require(:board).permit(:title, :intro)
     end
+
 
 end
