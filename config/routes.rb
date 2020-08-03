@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   
-  # root "pages#index"
+  root "users#sign_up"
   # get "/about", to: "pages#about"
   resources :boards do 
     resources :posts, shallow: true

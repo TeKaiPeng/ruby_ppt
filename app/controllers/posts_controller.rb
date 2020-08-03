@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
     def new
         @post = @board.posts.new
-        @post = Post.new
+        # @post = Post.new
+        # 因為重複動作不用把一個實體變數指定成兩個東西
     end
 
     def create
