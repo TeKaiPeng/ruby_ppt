@@ -4,7 +4,7 @@
     <% if user_signed_in? %>
 
       <li><%= current_user.account %></li>
-      <li>登出</li>
+      <li><%= link_to '登出', user_signed_out_path %></li>
 
     <% else %>
 
