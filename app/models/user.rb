@@ -1,11 +1,11 @@
 class User < ApplicationRecord
+    before_create :encrypy_password
+
     validates :account, uniqueness: true, uniqueness: true
     validates :email, uniqueness: true, uniqueness: true
 
     has_many :board_masters
     has_many :boards, through: :board_masters
-
-    before_create :encrypt_password
 
     def self.login(options)
         if options[:account] && options[:password]
@@ -17,7 +17,6 @@ class User < ApplicationRecord
         end
     end
 
-
     private 
     def encrypy_password
         self.password = bigbang(self.password)  #self可以拿掉，前面的會變區域變數，後面會變方法
@@ -28,6 +27,4 @@ class User < ApplicationRecord
         string = "x#{string}y"
         Digest::SHA1.hexdigest(string)
     end
-
-
 end

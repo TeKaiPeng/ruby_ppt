@@ -6,6 +6,5 @@ class Board < ApplicationRecord
     has_many :users, through: :board_masters
 
     validates :title, :intro, presence: true
-
 end
 

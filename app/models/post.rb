@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :board
+
   validates :title, presence: true,  :length => {:minimum => 2, :maximum => 10}
   validates :serial, uniqueness: true
   
@@ -13,6 +14,4 @@ class Post < ApplicationRecord
   def serial_generator(n)
     [*'a'..'z', *'A'..'Z', *0..9].sample(n).join
   end
-
-
 end
