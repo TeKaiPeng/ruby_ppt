@@ -28,8 +28,7 @@ class UsersController < ApplicationController
         if @user.save
             #登入 
             sign_in_user(@user)
-            # session[:user_token] = @user.id
-            #去首頁
+            # session[:user_token] = @user.id #去首頁
             redirect_to root_path, notice: '會員註冊成功'
         else
             render :sign_up
