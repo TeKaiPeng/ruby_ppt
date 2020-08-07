@@ -1,0 +1,9 @@
+<h1>我的最愛</h1>
+
+<% if @boards.any?  %>
+    <% @boards.each do |board|  %>
+        <%= board.title %>
+      <% end %>
+      <% else %>
+      目前沒有喜歡的喔💔
+      <% end %>

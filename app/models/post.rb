@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :board
   belongs_to :user
+  #has_many :favorite_board
 
   validates :title, presence: true,  :length => {:minimum => 2, :maximum => 10}
   validates :serial, uniqueness: true
@@ -8,7 +9,11 @@ class Post < ApplicationRecord
   before_save :create_serial
   
   def display_username
-    user.nil? "未知" :user.account
+    if  user.nil? 
+        "未知"
+    else
+       :user.account
+    end
   end
 
   private

@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
     include UsersHelper
 
-    before_action :find_board, only: [:show, :edit, :update, :destroy]
+    before_action :find_board, only: [:favorite, :show, :edit, :update, :destroy]
     before_action :require_user_sign_in, except: [:index, :show]
 
 
@@ -10,8 +10,14 @@ class BoardsController < ApplicationController
     end
     
     def show
-        @post = @board.posts
+        @post = @board.posts.includes(:user)
     end
+
+    def favorite
+        current_user.toggle_favorite_board(@board) #先定義toggle在model，之後取用比較方便
+        redirect_to favorites_path, notice: 'OK!!!'
+    end
+
 
     def new
         # if user_signed_in? #!上面有before_action了所以可以註解掉

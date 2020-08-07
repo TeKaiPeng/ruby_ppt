@@ -8,6 +8,9 @@ class User < ApplicationRecord
     has_many :boards, through: :board_masters
     has_many :posts
 
+    has_many :favorite_board
+    has_many :favorited_boards, through: :favorite_boards, source: 'Board'
+
     def self.login(options)
         if options[:account] && options[:password]
             find_by(account: options[:account], 
@@ -17,11 +20,18 @@ class User < ApplicationRecord
         #     return false 因為都是回傳nil, 所以可以乾脆不寫
         end
     end
-    
+
+    def toggle_favorite(b)
+        if favorited_boards.exists?(b.id) #先檢查現有的這個id有沒有存在
+            favorited_boards.destroy(b)
+        else
+            favorited_boards << b
+        end
+    end
+
     def display_name
         account || '未知'
     end
-
 
     private 
     def encrypy_password
