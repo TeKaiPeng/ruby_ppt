@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    # rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     before_action :find_user
 
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(id: session[:user_token])
     end
 
-    def require_user_sign_in
+    def authenticate_user!
         redirect_to root_path, notice:'請登入會員' if not user_signed_in?
      end
 end

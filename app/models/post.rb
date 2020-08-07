@@ -9,10 +9,11 @@ class Post < ApplicationRecord
   before_save :create_serial
   
   def display_username
+    # user.nil? ? "沒有填寫" : user.account 底下那一坨可以縮成醬
     if  user.nil? 
-        "未知"
+      "沒有填寫" 
     else
-       :user.account
+       user.account
     end
   end
 
