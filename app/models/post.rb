@@ -1,10 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :board
+  belongs_to :user
 
   validates :title, presence: true,  :length => {:minimum => 2, :maximum => 10}
   validates :serial, uniqueness: true
   
   before_save :create_serial
+  
+  def display_username
+    user.nil? "未知" :user.account
+  end
 
   private
   def create_serial

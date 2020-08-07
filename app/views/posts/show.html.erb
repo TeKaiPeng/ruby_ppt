@@ -1,4 +1,21 @@
 <h1>this is article page</h1>
 
-<%= @post.title %>
-<%= @post.content %>
+
+<ul>
+    <li>
+        <span>作者</span>
+        <span><%= post.user.account %></span>
+    </li>
+    <li>
+        <span>看板</span>
+        <span><%= post.board.title %></span>
+    </li>
+    <li>
+        <span><%= @post.title %></span>
+        <span><%= @post.content %></span>
+    </li>
+    <li>
+        <span>時間</span>
+        <span><%= @post.created_at %></span>
+    </li>
+</ul>

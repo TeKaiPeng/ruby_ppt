@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
      
     def login
-        # if user_params[:account] && user_params[:password] #認證過了、就可以省略！
+        # if user_params[:account] && user_params[:password] #認證過了就可以省略！
             #認證
             user = User.login(user_params)
             if user

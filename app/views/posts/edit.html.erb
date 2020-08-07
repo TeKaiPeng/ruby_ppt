@@ -1,2 +1,13 @@
 <h1>this is article edit page</h1>
 
+
+
+<%= form_for(@post) do |f|%>
+    <%= f.label :title, '文章名稱'%>
+    <%= f.text_field :title%>
+
+    <%= f.label :intro, '文章說明'%>
+    <%= f.text_area :intro%>
+
+    <%= f.submit '送出'%>
+<% end %>

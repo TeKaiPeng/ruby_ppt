@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
     has_many :board_masters
     has_many :boards, through: :board_masters
+    has_many :posts
 
     def self.login(options)
         if options[:account] && options[:password]
@@ -16,6 +17,11 @@ class User < ApplicationRecord
         #     return false 因為都是回傳nil, 所以可以乾脆不寫
         end
     end
+    
+    def display_name
+        account || '未知'
+    end
+
 
     private 
     def encrypy_password
