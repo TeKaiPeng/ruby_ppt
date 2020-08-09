@@ -24,11 +24,14 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-        # User.find(session[:user_token]) if user_signed_in?
-        @current_user ||= User.find_by(id: session[:user_token])
+			# User.find(session[:user_token]) if user_signed_in?
+			@current_user ||= User.find_by(id: session[:user_token])
     end
 
     def authenticate_user!
-        redirect_to root_path, notice:'請登入會員' if not user_signed_in?
-     end
+			# redirect_to root_path, notice:'請登入會員' if not user_signed_in? //可以縮寫成這樣
+			if not user_signed_in?
+				redirect_to root_path, notice:'請登入會員'
+			end
+    end
 end

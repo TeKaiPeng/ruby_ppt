@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
     include UsersHelper
 
     before_action :find_board, only: [:favorite, :show, :edit, :update, :destroy]
-    before_action :require_user_sign_in, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show]
 
 
     def index

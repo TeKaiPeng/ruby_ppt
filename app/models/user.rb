@@ -11,13 +11,14 @@ class User < ApplicationRecord
     has_many :favorite_boards
     has_many :favorited_boards, through: :favorite_boards, source: :board
 
-    def self.login(options)
-        if options[:account] && options[:password]
-            find_by(account: options[:account], 
-                    # password: Digest::SHA1.hexdigest('x' + options[:password] + 'y'))
-                    password: Digest::SHA1.hexdigest("x#{options[:password]}y"))
-        # else
-        #     return false 因為都是回傳nil, 所以可以乾脆不寫
+    def self.login(options) # 這個方法是給"USER類別"使用 所以前面要加上SELF
+        if options[:account] && options[:password] #如果登入的時候有輸入帳號跟密碼的話
+        
+        return find_by(account: options[:account],  #去比對帳號、密碼
+            # password: Digest::SHA1.hexdigest('x' + options[:password] + 'y')) 晏慈用的，也可以這樣打
+            password: Digest::SHA1.hexdigest("x#{options[:password]}y")) 
+        else
+            return false	#因為都是回傳nil, 所以可以乾脆不寫
         end
     end
 

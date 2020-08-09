@@ -14,23 +14,27 @@
     <%= p.text_area :content%>
 </div>
 
-    <%= p.label :belongs_to, '作者'%>
-    <%= p.text_area :board%>
+    <%#= p.label :belongs_to, '作者'%><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
+
+    <%#= p.text_field :belongs_to %><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
+
 
     <%= p.label :datetime, '時間'%>
-    <%= p.date_field :deleted_at%>
+    
+    <%#= p.date_field :datetime%><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
 
-    <%= p.label :string, 'IP'%>
-    <%= p.text_field :ip_address%>
+
+    <%= p.label :serial, 'IP'%>
+    <%#= p.text_field :serial%><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
 
     <%= p.submit '送出'%>
 <% end %>
 
 
-
+<%# 
       t.string :title
       t.text :content
       t.belongs_to :board, null: false, foreign_key: true
       t.datetime :deleted_at
       t.string :ip_address
-      t.string :serial
+      t.string :serial %>

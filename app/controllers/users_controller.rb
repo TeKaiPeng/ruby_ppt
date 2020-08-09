@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    def sign_in
+    def sign_in # GET 取得表單畫面
         @user = User.new
     end
 
@@ -8,10 +8,10 @@ class UsersController < ApplicationController
         @user = User.new
     end
      
-    def login
+    def login #跟SIGN_IN一對 # POST送出表單內容
         # if user_params[:account] && user_params[:password] #認證過了就可以省略！
             #認證
-            user = User.login(user_params)
+            user = User.login(user_params) #如果他輸入對的帳號密碼
             if user
                 sign_in_user(user)
                 redirect_to root_path, notice: '成功登入囉！！！'

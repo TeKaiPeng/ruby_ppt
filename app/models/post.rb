@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validates :title, presence: true,  :length => {:minimum => 2, :maximum => 10}
   validates :serial, uniqueness: true
   
-  before_save :create_serial
+  before_create :create_serial
   
   def display_username
     # user.nil? ? "沒有填寫" : user.account 底下那一坨可以縮成醬
