@@ -11,11 +11,17 @@ class BoardsController < ApplicationController
     
     def show
         @post = @board.posts.includes(:user)
+
     end
 
     def favorite
         current_user.toggle_favorite_board(@board) #先定義toggle在model，之後取用比較方便
-        redirect_to favorites_path, notice: 'OK!!!'
+
+        respond_to do |format| 
+            format.html {redirect_to favorites_path, notice: 'OK!!!'} #如果來的是HTML的話，去最愛頁面
+            format.json {render json: {status: @board.favorited_by?(current_user) } } #如果來的是json 給他狀態1
+        end
+        
     end
 
 
