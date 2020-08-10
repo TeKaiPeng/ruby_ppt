@@ -42,7 +42,9 @@ class PostsController < ApplicationController
 
 
     def show 
-        @post = Post.find(params[:id])
+        @post = Post.find(params[:id]) #先找到那篇文張
+        @comment = @post.comments.new
+        @comments = @post.comments.order(id: :desc) #因為這邊的表單會有很多留言，所以要用複數 .order後面就是他的順序，desc等於反過來把最新的放在上面
     end    
 
     def destroy

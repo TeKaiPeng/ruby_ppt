@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :board_masters
     has_many :boards, through: :board_masters
     has_many :posts
+    has_many :comments
 
     has_many :favorite_boards
     has_many :favorited_boards, through: :favorite_boards, source: :board
@@ -14,7 +15,7 @@ class User < ApplicationRecord
     def self.login(options) # 這個方法是給"USER類別"使用 所以前面要加上SELF
         if options[:account] && options[:password] #如果登入的時候有輸入帳號跟密碼的話
         
-        return find_by(account: options[:account],  #去比對帳號、密碼
+        return find_by(account: options[:account],  #去比對帳號密碼
             # password: Digest::SHA1.hexdigest('x' + options[:password] + 'y')) 晏慈用的，也可以這樣打
             password: Digest::SHA1.hexdigest("x#{options[:password]}y")) 
         else

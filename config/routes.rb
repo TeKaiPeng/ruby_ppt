@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     member do
       post :favorite
     end
-    resources :posts, shallow: true
+
+    resources :posts, shallow: true do
+      resources :comments, shallow: true, only: [:create]
+    end
   end
 
     # resources :posts, except: [:index, :new, :create]

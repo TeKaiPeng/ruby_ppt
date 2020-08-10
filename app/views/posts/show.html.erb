@@ -4,11 +4,11 @@
 <ul>
     <li>
         <span>作者</span>
-        <span><%= post.user.account %></span>
+        <span><%= @post.user.account %></span>
     </li>
     <li>
         <span>看板</span>
-        <span><%= post.board.title %></span>
+        <span><%= @post.board.title %></span>
     </li>
     <li>
         <span><%= @post.title %></span>
@@ -19,3 +19,14 @@
         <span><%= @post.created_at %></span>
     </li>
 </ul>
+
+<%= form_with(model: @comment, url: post_comments_path(@post)) do |form| %>
+    <%= form.text_field :content %>
+    <%= form.submit '送出' %>
+<% end %>
+
+<br>
+
+<% @comments.each do |comment| %>
+    <%= comment.content %>
+<% end %>
