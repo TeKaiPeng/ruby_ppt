@@ -15,13 +15,12 @@ class BoardsController < ApplicationController
     end
 
     def favorite
-        current_user.toggle_favorite_board(@board) #先定義toggle在model，之後取用比較方便
+        current_user.toggle_favorite(@board) #先定義toggle在model，之後取用比較方便
 
         respond_to do |format| 
             format.html {redirect_to favorites_path, notice: 'OK!!!'} #如果來的是HTML的話，去最愛頁面
             format.json {render json: {status: @board.favorited_by?(current_user) } } #如果來的是json 給他狀態1
-        end
-        
+        end 
     end
 
 

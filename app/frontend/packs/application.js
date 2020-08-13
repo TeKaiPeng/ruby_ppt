@@ -11,9 +11,7 @@ const imagePath = (name) => images(name, true)
 
 // console.log("hello"); 
 
-require("../scripts");
-require("../stylesheets");
-
-// #如果下次跑不出來，記得要先開☁  ppt [master] ⚡  foreman start -f Procfile.dev
+require("../scripts")
+require("../stylesheets/frontend") // #如果下次跑不出來，記得要先開☁  ppt [master] ⚡  foreman start -f Procfile.dev
 
 import "controllers"
