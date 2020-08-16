@@ -11,7 +11,6 @@ class BoardsController < ApplicationController
     
     def show
         @post = @board.posts.includes(:user)
-
     end
 
     def favorite
