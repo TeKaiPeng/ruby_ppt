@@ -1,12 +1,12 @@
 class BoardsController < ApplicationController
     include UsersHelper
 
-    before_action :find_board, only: [:favorite, :show, :edit, :update, :destroy]
+    before_action :find_board, only: [:favorite, :show, :edit, :update, :destroy, :hide]
     before_action :authenticate_user!, except: [:index, :show]
-
 
     def index
         @boards = Board.where(deleted_at: nil)
+        # @boards = Board.normal
     end
     
     def show
@@ -57,10 +57,16 @@ class BoardsController < ApplicationController
         redirect_to boards_path, notice: "刪除成功啦"
     end
 
+    def hide
+        @board.hide! if @board.may_hide?
+        redirect_to boards_path, notice: '看板已經隱藏囉！！'
+    end
+
+
 
     private
     def find_board
-        @board = Board.find(params[:id])
+        @board = Board.normal.find(params[:id])
     end
 
     def board_params
