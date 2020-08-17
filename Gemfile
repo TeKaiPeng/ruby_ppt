@@ -32,6 +32,14 @@ gem 'hirb-unicode', '~> 0.0.5'
 
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
+
+gem 'pundit', '~> 2.1'
+
+gem "braintree", "~> 2.102.0"
+
+gem 'figaro', '~> 1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

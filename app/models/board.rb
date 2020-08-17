@@ -1,6 +1,6 @@
 class Board < ApplicationRecord
     acts_as_paranoid
-
+    paginates_per 5
     # default_scope { normal }
 
     has_many :posts

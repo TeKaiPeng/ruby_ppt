@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
 
     def index
         @boards = Board.where(deleted_at: nil)
-        # @boards = Board.normal
+        # @boards = Board.normal.page(params[:page])
     end
     
     def show
@@ -29,10 +29,13 @@ class BoardsController < ApplicationController
         # else
         #     redirect_to root_path, :notice '請先登入'
         # end
+        authorize @board, :new?
     end
 
     def create
         @board = Board.new(board_params)
+        @board.users << current_user
+        authorize @board, :create?
 
         if @board.save
             redirect_to boards_path, notice: "新增成功"
@@ -63,7 +66,6 @@ class BoardsController < ApplicationController
     end
 
 
-
     private
     def find_board
         @board = Board.normal.find(params[:id])
@@ -72,6 +74,4 @@ class BoardsController < ApplicationController
     def board_params
     params.require(:board).permit(:title, :intro)
     end
-
-
 end
