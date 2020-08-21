@@ -11,11 +11,11 @@ class PostsController < ApplicationController
     def create
         # @post = current_user.posts.new(post_params)
         # @post.board = @board
-
         @post = @board.posts.new(post_params)
         # @post.user = current_user    #下面private有寫入，這邊就可以省略
-
         if @post.save
+            # UserMailer.with(user: @user).welcome_email.deliver_later
+            SendmailJob.set(wait: 10.second).perform_later(@post)
             redirect_to @board, notice: '文章新增成功'
         else
             render :new
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
     private
     def post_params
         params.require(:post)
-            .permit(:title, :content)
+            .permit(:title, :content, :photo, :hello)
             .merge(user_id: current_user.id) #讓上面的post_params抓到user，merge後面有沒有驚嘆號都可以，無論有沒有改變，這邊只要回傳結果
     end
 

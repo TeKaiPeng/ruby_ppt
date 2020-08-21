@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -40,9 +40,13 @@ gem "braintree", "~> 2.102.0"
 
 gem 'figaro', '~> 1.0'
 
+gem 'carrierwave', '~> 2.0'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'letter_opener_web', '~> 1.4'
 end
 
 group :development do
@@ -53,7 +57,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman', '~> 0.87.1'
-end
+  end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver

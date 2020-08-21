@@ -19,6 +19,10 @@
     </li>
 </ul>
 
+<%= @post.content %>
+<%= @post.hello %>
+<%= image_tag @post.photo.variant(resize_to_limit: [500, 500]) if @post.photo.attached? %>
+
 <%= form_with(model: @comment, url: post_comments_path(@post)) do |form| %>
     <%= form.text_field :content %>
     <%= form.submit '送出' %>

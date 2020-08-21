@@ -11,7 +11,7 @@
 
 <div class="fields">
     <%= p.label :content, '文章內容'%>
-    <%= p.text_area :content%>
+    <%= p.rich_text_area :content%>
 </div>
 
     <%#= p.label :belongs_to, '作者'%><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
@@ -26,6 +26,9 @@
 
     <%= p.label :serial, 'IP'%>
     <%#= p.text_field :serial%><%# 因為不能讓他輸入，所以要註解掉喔👍 %>
+
+    <%= form.label :photo, '附件' %>
+    <%= form.file_field :photo %>
 
     <%= p.submit '送出'%>
 <% end %>

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
     private
     def not_authorize
-        redirect_to root, notice: '權限不夠喔'
+        redirect_to root_path, notice: '權限不夠喔'
     end
 
     def find_user

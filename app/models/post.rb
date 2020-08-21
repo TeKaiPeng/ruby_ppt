@@ -1,8 +1,11 @@
 class Post < ApplicationRecord
+  has_rich_text :hello
   belongs_to :board
   belongs_to :user
   has_many :comments
   #has_many :favorite_board
+
+  has_one_attached :photo
 
   validates :title, presence: true,  :length => {:minimum => 2, :maximum => 10}
   validates :serial, uniqueness: true

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
   
-  root "boards#index"
+  root "pages#index"
   get "/about", to: "pages#about"
   get "/pricing", to: "pages#pricing"
   get "/payment", to: "pages#payment"
@@ -32,5 +32,7 @@ Rails.application.routes.draw do
       delete :sign_out
     end
   end
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
 end
 
