@@ -40,7 +40,7 @@ gem "braintree", "~> 2.102.0"
 
 gem 'figaro', '~> 1.0'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 
 group :development, :test do
